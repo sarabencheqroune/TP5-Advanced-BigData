@@ -1,0 +1,137 @@
+dashboard_title: "Cha\xEEne trajets : supervision"
+description: null
+css: ''
+slug: null
+certified_by: ''
+certification_details: ''
+published: true
+uuid: 97bb90b1-19af-4d66-b514-3d3c705647af
+position:
+  CHART-5jmhqn4MFqPd-HyCeQEVr:
+    children: []
+    id: CHART-5jmhqn4MFqPd-HyCeQEVr
+    meta:
+      chartId: 6
+      height: 50
+      sliceName: "Dur\xE9e des runs (s)"
+      uuid: 8b2995d2-0eaf-496b-a2cc-830d0b8000ba
+      width: 9
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-7JL53tfdsrnDwq5s-y8in
+    type: CHART
+  CHART-fhBC7VIQ8QtXaO7ZZHMia:
+    children: []
+    id: CHART-fhBC7VIQ8QtXaO7ZZHMia
+    meta:
+      chartId: 7
+      height: 19
+      sliceName: "Runs en \xE9chec"
+      uuid: ba226ae4-a0c6-4ee5-942a-83391006730d
+      width: 9
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-uqyIHl-Fd4hPoNV_161QF
+    type: CHART
+  DASHBOARD_VERSION_KEY: v2
+  GRID_ID:
+    children:
+    - ROW-SF5p-0goR3G_KHjBxq29z
+    - ROW-7JL53tfdsrnDwq5s-y8in
+    - ROW-uqyIHl-Fd4hPoNV_161QF
+    id: GRID_ID
+    parents:
+    - ROOT_ID
+    type: GRID
+  HEADER_ID:
+    id: HEADER_ID
+    meta:
+      text: "Cha\xEEne trajets : supervision"
+    type: HEADER
+  MARKDOWN-vlBdKocUmjXMoT_VFSlDq:
+    children: []
+    id: MARKDOWN-vlBdKocUmjXMoT_VFSlDq
+    meta:
+      code: "### Cha\xEEne trajets : supervision"
+      height: 9
+      width: 9
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-SF5p-0goR3G_KHjBxq29z
+    type: MARKDOWN
+  ROOT_ID:
+    children:
+    - GRID_ID
+    id: ROOT_ID
+    type: ROOT
+  ROW-7JL53tfdsrnDwq5s-y8in:
+    children:
+    - CHART-5jmhqn4MFqPd-HyCeQEVr
+    id: ROW-7JL53tfdsrnDwq5s-y8in
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    type: ROW
+  ROW-SF5p-0goR3G_KHjBxq29z:
+    children:
+    - MARKDOWN-vlBdKocUmjXMoT_VFSlDq
+    id: ROW-SF5p-0goR3G_KHjBxq29z
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    type: ROW
+  ROW-uqyIHl-Fd4hPoNV_161QF:
+    children:
+    - CHART-fhBC7VIQ8QtXaO7ZZHMia
+    id: ROW-uqyIHl-Fd4hPoNV_161QF
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    type: ROW
+metadata:
+  chart_configuration:
+    '6':
+      id: 6
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 7
+    '7':
+      id: 7
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 6
+  global_chart_configuration:
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded: []
+    chartsInScope:
+    - 6
+    - 7
+  native_filter_configuration: []
+  chart_customization_config: []
+  map_label_colors:
+    failed: '#1FA8C9'
+    success: '#454E7C'
+  color_scheme: ''
+  refresh_frequency: 0
+  color_scheme_domain: []
+  expanded_slices: {}
+  label_colors: {}
+  shared_label_colors: []
+  timed_refresh_immune_slices: []
+  cross_filters_enabled: true
+  default_filters: '{}'
+theme_uuid: null
+version: 1.0.0

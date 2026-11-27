@@ -1,0 +1,282 @@
+dashboard_title: 'Trajets : suivi quotidien'
+description: null
+css: ''
+slug: null
+certified_by: ''
+certification_details: ''
+published: true
+uuid: 9d73e001-0a2a-497c-8416-c2beaed5be1b
+position:
+  CHART-FHVxwjGn0iRZ_KKoZKOuC:
+    children: []
+    id: CHART-FHVxwjGn0iRZ_KKoZKOuC
+    meta:
+      chartId: 5
+      height: 50
+      sliceName: "\xC9cart \xE0 la conso annonc\xE9e"
+      uuid: ca3a1bf4-9318-48a0-8fbf-501a69c0e2d1
+      width: 12
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-1zKCg5ZBQ24-DclLhC_Wq
+    type: CHART
+  CHART-P1NYJDmcrE6hge-TQZW7F:
+    children: []
+    id: CHART-P1NYJDmcrE6hge-TQZW7F
+    meta:
+      chartId: 2
+      height: 24
+      sliceName: "Consommation r\xE9elle"
+      uuid: 6478d4df-2433-4781-a433-6162bd6b19b9
+      width: 5
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-lzW0ybNouBlOhX98Lerr-
+    type: CHART
+  CHART-PeBCrq_UErAeaJMDu4Xpv:
+    children: []
+    id: CHART-PeBCrq_UErAeaJMDu4Xpv
+    meta:
+      chartId: 1
+      height: 24
+      sliceName: Trajets par jour
+      uuid: 9db856ab-0f2b-4cf1-a31c-92fd8ac0a948
+      width: 7
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-lzW0ybNouBlOhX98Lerr-
+    type: CHART
+  CHART-WpxFs51kMAAoF3LgUTChu:
+    children: []
+    id: CHART-WpxFs51kMAAoF3LgUTChu
+    meta:
+      chartId: 3
+      height: 50
+      sliceName: "Kilom\xE8tres par type de route"
+      uuid: 17bd1841-6c51-4494-936f-274f2e273736
+      width: 6
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-p3N12awps1woYw1YV8Atl
+    type: CHART
+  CHART-t4Zt2jhnpX1Ryc9ps1beM:
+    children: []
+    id: CHART-t4Zt2jhnpX1Ryc9ps1beM
+    meta:
+      chartId: 4
+      height: 50
+      sliceName: "Trajets par r\xE9gion"
+      uuid: feba0270-52e6-4163-81e9-f5cbff4cb1a3
+      width: 6
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-p3N12awps1woYw1YV8Atl
+    type: CHART
+  DASHBOARD_VERSION_KEY: v2
+  GRID_ID:
+    children:
+    - ROW-9ZQ6sAmIYwlce45B0szZo
+    - ROW-lzW0ybNouBlOhX98Lerr-
+    - ROW-p3N12awps1woYw1YV8Atl
+    - ROW-1zKCg5ZBQ24-DclLhC_Wq
+    id: GRID_ID
+    parents:
+    - ROOT_ID
+    type: GRID
+  HEADER_ID:
+    id: HEADER_ID
+    meta:
+      text: 'Trajets : suivi quotidien'
+    type: HEADER
+  MARKDOWN-6v1AxbuuJlTDbdItE8SPV:
+    children: []
+    id: MARKDOWN-6v1AxbuuJlTDbdItE8SPV
+    meta:
+      code: "**Donn\xE9es au 7 d\xE9cembre 2025**,\nrecalcul\xE9es chaque nuit par\
+        \ Airflow (trajets_quotidien).\n\nPropri\xE9taire : direction des op\xE9rations.\n\
+        \nD\xE9finitions : documentation dbt, mod\xE8le trajets_jour."
+      height: 15
+      width: 12
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    - ROW-9ZQ6sAmIYwlce45B0szZo
+    type: MARKDOWN
+  ROOT_ID:
+    children:
+    - GRID_ID
+    id: ROOT_ID
+    type: ROOT
+  ROW-1zKCg5ZBQ24-DclLhC_Wq:
+    children:
+    - CHART-FHVxwjGn0iRZ_KKoZKOuC
+    id: ROW-1zKCg5ZBQ24-DclLhC_Wq
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    type: ROW
+  ROW-9ZQ6sAmIYwlce45B0szZo:
+    children:
+    - MARKDOWN-6v1AxbuuJlTDbdItE8SPV
+    id: ROW-9ZQ6sAmIYwlce45B0szZo
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    type: ROW
+  ROW-lzW0ybNouBlOhX98Lerr-:
+    children:
+    - CHART-P1NYJDmcrE6hge-TQZW7F
+    - CHART-PeBCrq_UErAeaJMDu4Xpv
+    id: ROW-lzW0ybNouBlOhX98Lerr-
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    type: ROW
+  ROW-p3N12awps1woYw1YV8Atl:
+    children:
+    - CHART-WpxFs51kMAAoF3LgUTChu
+    - CHART-t4Zt2jhnpX1Ryc9ps1beM
+    id: ROW-p3N12awps1woYw1YV8Atl
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - GRID_ID
+    type: ROW
+metadata:
+  chart_configuration:
+    '3':
+      id: 3
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 1
+        - 2
+        - 4
+        - 5
+    '4':
+      id: 4
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 1
+        - 2
+        - 3
+        - 5
+    '5':
+      id: 5
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 1
+        - 2
+        - 3
+        - 4
+  global_chart_configuration:
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded: []
+    chartsInScope:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  native_filter_configuration:
+  - id: NATIVE_FILTER-kyoTPEqqEcrbLQk09T49t
+    type: NATIVE_FILTER
+    name: "R\xE9gion"
+    filterType: filter_select
+    description: ''
+    targets:
+    - column:
+        name: region
+      datasetUuid: 95d97dd5-5dcd-425f-bc2e-6051cdf70170
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 5
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      creatable: true
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    sortMetric: null
+  - id: NATIVE_FILTER-y2CHte0Kx4sczx4jXOaYZ
+    type: NATIVE_FILTER
+    name: Type de route
+    filterType: filter_select
+    description: ''
+    targets:
+    - column:
+        name: type_route
+      datasetUuid: 95d97dd5-5dcd-425f-bc2e-6051cdf70170
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 5
+    controlValues:
+      enableEmptyFilter: false
+      defaultToFirstItem: false
+      creatable: true
+      multiSelect: true
+      searchAllOptions: false
+      inverseSelection: false
+    defaultDataMask:
+      extraFormData: {}
+      filterState: {}
+      ownState: {}
+    cascadeParentIds: []
+    sortMetric: null
+  - name: "P\xE9riode"
+    filterType: filter_time
+    description: ''
+    type: NATIVE_FILTER
+    defaultValueQueriesData: null
+    requiredFirst: {}
+    controlValues:
+      enableEmptyFilter: false
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded:
+      - 5
+    id: NATIVE_FILTER-onR1FHeQzgx63OVT6k4no
+  chart_customization_config: []
+  map_label_colors:
+    trajets: '#1FA8C9'
+    autoroute: '#1FA8C9'
+    route: '#454E7C'
+    urbain: '#5AC189'
+  color_scheme: ''
+  refresh_frequency: 0
+  color_scheme_domain: []
+  expanded_slices: {}
+  label_colors: {}
+  shared_label_colors: []
+  timed_refresh_immune_slices: []
+  cross_filters_enabled: true
+  default_filters: '{}'
+theme_uuid: null
+version: 1.0.0

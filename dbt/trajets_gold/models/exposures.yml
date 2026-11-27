@@ -1,0 +1,15 @@
+version: 2
+
+exposures:
+  - name: tableau_de_bord_trajets
+    label: "Trajets : suivi quotidien"
+    type: dashboard
+    maturity: high
+    url: http://localhost:8088/superset/dashboard/trajets-suivi/
+    description: "Tableau de bord Superset de la direction des opérations"
+    owner:
+      name: Direction des opérations
+      email: operations@agence.ma
+    depends_on:
+      - ref('trajets_jour')
+      - ref('conso_modeles')

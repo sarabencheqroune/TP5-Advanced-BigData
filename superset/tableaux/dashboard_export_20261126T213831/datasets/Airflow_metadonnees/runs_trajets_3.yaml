@@ -1,0 +1,129 @@
+table_name: runs_trajets
+main_dttm_col: debut
+currency_code_column: null
+description: null
+default_endpoint: null
+offset: 0
+cache_timeout: null
+catalog: airflow
+schema: public
+sql: "SELECT\n    r.run_id,\n    r.run_type,\n    r.state,\n    to_char(r.logical_date,\
+  \ 'YYYY-MM-DD') AS jour_traite,\n    min(t.start_date) AS debut,\n    EXTRACT(\n\
+  \        EPOCH FROM max(t.end_date) - min(t.start_date)\n    ) AS duree_s,\n   \
+  \ count(*) FILTER (\n        WHERE t.state IN ('failed', 'upstream_failed')\n  \
+  \  ) AS taches_ko\nFROM dag_run r\nJOIN task_instance t\n    ON t.dag_id = r.dag_id\n\
+  \    AND t.run_id = r.run_id\nWHERE r.dag_id = 'trajets_quotidien'\n    AND r.end_date\
+  \ IS NOT NULL\nGROUP BY r.run_id, r.run_type, r.state, r.logical_date;"
+params: null
+template_params: null
+filter_select_enabled: true
+fetch_values_predicate: null
+extra: null
+normalize_columns: false
+always_filter_main_dttm: false
+folders: null
+uuid: b6702f86-bf26-4edb-bdb9-d95f15dc845e
+metrics:
+- metric_name: count
+  verbose_name: COUNT(*)
+  metric_type: count
+  expression: COUNT(*)
+  description: null
+  d3format: null
+  currency: null
+  extra: null
+  warning_text: null
+columns:
+- column_name: duree_s
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: DECIMAL
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  datetime_format: null
+  extra: null
+- column_name: debut
+  verbose_name: null
+  is_dttm: true
+  is_active: true
+  type: DATETIMETZ
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  datetime_format: null
+  extra: null
+- column_name: taches_ko
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: LONGINTEGER
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  datetime_format: null
+  extra: null
+- column_name: jour_traite
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: STRING
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  datetime_format: null
+  extra: null
+- column_name: run_id
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: STRING
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  datetime_format: null
+  extra: null
+- column_name: run_type
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: STRING
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  datetime_format: null
+  extra: null
+- column_name: state
+  verbose_name: null
+  is_dttm: false
+  is_active: true
+  type: STRING
+  advanced_data_type: null
+  groupby: true
+  filterable: true
+  expression: null
+  description: null
+  python_date_format: null
+  datetime_format: null
+  extra: null
+version: 1.0.0
+database_uuid: 6bc04d2d-57dc-4c55-bb48-0576df8be238

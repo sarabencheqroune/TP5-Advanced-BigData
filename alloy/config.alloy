@@ -1,0 +1,97 @@
+// Alloy : collecte les journaux et les envoie à Loki
+
+// 1. La sortie de chaque conteneur du TP, lue par le socket Docker
+discovery.docker "conteneurs" {
+  host = "unix:///var/run/docker.sock"
+}
+
+discovery.relabel "conteneurs" {
+  targets = discovery.docker.conteneurs.targets
+  rule {                              // seulement les conteneurs de ce compose
+    source_labels = ["__meta_docker_container_label_com_docker_compose_project"]
+    regex         = "tp2-nifi"
+    action        = "keep"
+  }
+  rule {                              // étiquette service = nom du service compose
+    source_labels = ["__meta_docker_container_label_com_docker_compose_service"]
+    target_label  = "service"
+  }
+}
+
+loki.source.docker "conteneurs" {
+  host          = "unix:///var/run/docker.sock"
+  targets       = discovery.relabel.conteneurs.output
+  labels        = {source = "conteneur"}
+  forward_to    = [loki.write.local.receiver]
+}
+
+// 2. Les journaux des tâches Airflow, un fichier par tâche et par essai
+local.file_match "taches" {
+  path_targets = [{"__path__" = "/opt/airflow/logs/dag_id=*/run_id=*/task_id=*/*.log"}]
+}
+
+loki.source.file "taches" {
+  targets    = local.file_match.taches.targets
+  forward_to = [loki.process.taches.receiver]
+}
+
+loki.process "taches" {
+  stage.regex {                       // dag, tâche et essai, tirés du chemin du fichier
+    source     = "filename"
+    expression = "dag_id=(?P<dag_id>[^/]+)/run_id=(?P<run_id>[^/]+)/" +
+                 "task_id=(?P<task_id>[^/]+)/attempt=(?P<essai>[0-9]+)"
+  }
+  stage.json {                        // Airflow 3 écrit une ligne JSON par événement
+    expressions = {level = "level", message = "event", horodatage = "timestamp"}
+  }
+  stage.timestamp {
+    source = "horodatage"
+    format = "RFC3339Nano"
+  }
+  stage.labels {
+    values = {dag_id = "", task_id = "", level = ""}
+  }
+  stage.structured_metadata {
+    values = {run_id = "", essai = ""}
+  }
+  stage.static_labels {
+    values = {source = "tache"}
+  }
+  stage.label_drop {
+    values = ["filename"]
+  }
+  stage.output {                      // la ligne stockée : le message seul, lisible
+    source = "message"
+  }
+  forward_to = [loki.write.local.receiver]
+}
+
+// 3. Le journal des alertes écrit par le callback du DAG
+local.file_match "alertes" {
+  path_targets = [{"__path__" = "/opt/airflow/logs/alertes.log", "source" = "alertes"}]
+}
+
+loki.source.file "alertes" {
+  targets    = local.file_match.alertes.targets
+  forward_to = [loki.process.alertes.receiver]
+}
+
+loki.process "alertes" {
+  stage.regex {                       // l'heure écrite en tête de ligne par le callback
+    expression = "^(?P<horodatage>[0-9-]+ [0-9:]+) "
+  }
+  stage.timestamp {
+    source = "horodatage"
+    format = "2006-01-02 15:04"
+  }
+  stage.label_drop {
+    values = ["filename"]
+  }
+  forward_to = [loki.write.local.receiver]
+}
+
+loki.write "local" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+  }
+}

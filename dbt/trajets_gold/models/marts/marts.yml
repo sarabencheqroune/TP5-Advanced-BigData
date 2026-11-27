@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: trajets_jour
+    description: "Activité par jour, ville et type de route (le grain)"
+    config:
+      contract: {enforced: true}     # schéma vérifié AVANT l'écriture
+    data_tests:
+      - grain_unique:
+          arguments:
+            colonnes: ['jour', 'ville', 'type_route']
+    columns:
+      - name: jour
+        data_type: date
+        description: "Jour du début du trajet (UTC)"
+        data_tests: [not_null]
+      - name: ville
+        data_type: varchar
+      - name: region
+        data_type: varchar
+        description: "Région administrative de la ville (référentiel villes)"
+      - name: type_route
+        data_type: varchar
+      - name: nb_trajets
+        data_type: bigint
+      - name: nb_voitures
+        data_type: bigint
+      - name: km
+        data_type: decimal(12, 1)
+        description: "Distance totale parcourue, en km"
+      - name: litres
+        data_type: decimal(12, 2)
+        description: "Carburant consommé, en litres"
+      - name: conso_l100
+        data_type: decimal(6, 2)
+        description: "Consommation réelle : litres x 100 / km"
+
+  - name: conso_modeles
+    description: "Une ligne par modèle : consommation annoncée et réelle"
+    columns:
+      - name: modele
+        data_tests: [not_null]
+      - name: ecart_pct
+        description: "Écart de la consommation réelle à l'annoncée, en %"

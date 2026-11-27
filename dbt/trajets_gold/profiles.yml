@@ -1,0 +1,22 @@
+trajets_gold:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      method: none
+      host: trino
+      port: 8080
+      user: dbt
+      database: lake
+      schema: gold_dev
+      threads: 4
+
+    prod:
+      type: trino
+      method: none
+      host: trino
+      port: 8080
+      user: dbt
+      database: lake
+      schema: gold
+      threads: 4

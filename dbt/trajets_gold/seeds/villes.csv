@@ -1,0 +1,10 @@
+ville,region
+Rabat,Rabat-Salé-Kénitra
+Casablanca,Casablanca-Settat
+Tanger,Tanger-Tétouan-Al Hoceïma
+Fès,Fès-Meknès
+Meknès,Fès-Meknès
+Marrakech,Marrakech-Safi
+Agadir,Souss-Massa
+dbt build --vars "jour: 2025-12-02"
+Oujda,Oriental

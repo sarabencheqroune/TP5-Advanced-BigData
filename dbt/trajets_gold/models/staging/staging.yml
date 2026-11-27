@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_trajets
+    description: "Trajets valides, une ligne par trajet"
+    columns:
+      - name: trajet_id
+        description: "Identifiant du trajet (id_trajet du bronze)"
+        data_tests: [unique, not_null]
+      - name: ville
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('villes')
+                field: ville
+      - name: type_route
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['urbain', 'route', 'autoroute']
+      - name: voiture_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_voitures')
+                field: voiture_id
+
+  - name: stg_voitures
+    description: "Une ligne par voiture"
+    columns:
+      - name: voiture_id
+        data_tests: [unique, not_null]

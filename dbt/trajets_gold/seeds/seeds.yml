@@ -1,0 +1,15 @@
+version: 2
+
+seeds:
+  - name: villes
+    description: "Région administrative de chaque ville"
+    columns:
+      - name: ville
+        data_tests: [unique, not_null]
+
+  - name: releves_carburant
+    description: "Litres facturés chaque jour"
+    config:
+      column_types:
+        jour: date
+        litres_factures: "decimal(12, 1)"

@@ -1,0 +1,19 @@
+version: 2
+
+# Tests unitaires : des entrées fixées, une sortie attendue, sans données réelles
+unit_tests:
+  - name: ecart_calcule_sur_la_conso_moyenne
+    description: "Un modèle annoncé à 8 l/100 qui consomme 10 l/100 a un écart de +25 %"
+    model: conso_modeles
+    given:
+      - input: ref('stg_trajets')
+        rows:
+          - {voiture_id: 'a', distance_km: 100, carburant_l: 10}
+          - {voiture_id: 'a', distance_km: 50, carburant_l: 5}
+      - input: ref('stg_voitures')
+        rows:
+          - {voiture_id: 'a', modele: 'essai', origine: 'Europe', annee: 1980,
+             conso_annoncee_l100: 8}
+    expect:
+      rows:
+        - {modele: 'essai', nb_trajets: 2, conso_reelle_l100: 10.00, ecart_pct: 25.0}

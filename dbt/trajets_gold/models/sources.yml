@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: silver
+    description: "Tables Silver écrites par Spark"
+    database: lake
+    schema: silver
+    tables:
+      - name: trajets
+        description: "Trajets nettoyés, partitionnés par jour"
+        loaded_at_field: ingere_a
+        freshness:
+          warn_after: {count: 6, period: hour}
+          error_after: {count: 24, period: hour}
+        columns:
+          - name: id_trajet
+            data_tests: [unique, not_null]
+
+      - name: voitures
+        description: "Référentiel des 421 voitures"

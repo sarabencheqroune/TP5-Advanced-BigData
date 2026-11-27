@@ -1,0 +1,15 @@
+database_name: "Airflow (m\xE9tadonn\xE9es)"
+sqlalchemy_uri: postgresql+psycopg2://airflow:XXXXXXXXXX@postgres:5432/airflow
+cache_timeout: null
+expose_in_sqllab: true
+allow_run_async: false
+allow_ctas: false
+allow_cvas: false
+allow_dml: false
+allow_file_upload: false
+extra:
+  allows_virtual_table_explore: true
+impersonate_user: false
+configuration_method: dynamic_form
+uuid: 6bc04d2d-57dc-4c55-bb48-0576df8be238
+version: 1.0.0

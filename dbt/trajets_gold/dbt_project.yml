@@ -1,0 +1,26 @@
+name: trajets_gold
+version: '1.0.0'
+profile: trajets_gold
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+snapshot-paths: ["snapshots"]
+
+models:
+  trajets_gold:
+    staging:
+      +materialized: view
+      +schema: staging
+    marts:
+      +materialized: table
+
+seeds:
+  trajets_gold:
+    +schema: ref
+
+vars:
+  jour: null
+
+flags:
+  require_certificate_validation: true

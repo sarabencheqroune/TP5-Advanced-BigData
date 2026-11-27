@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+**/target/
+**/logs/
+**/dbt_packages/
+screenshots/
+*.parquet
+*.log
+superset/tableaux.zip
